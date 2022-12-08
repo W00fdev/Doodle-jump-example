@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameManager GameManagerObject;
+
     public float MoveSpeed;
     public float JumpForce;
 
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         // Изменяем горизонтальную скорость в физическом движении через ввод _moveX
         _rb2d.velocity = new Vector2(_moveX, _rb2d.velocity.y);
+
+        GameManagerObject.UpdatePlayerPosition(transform.position);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
